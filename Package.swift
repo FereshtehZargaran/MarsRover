@@ -4,10 +4,21 @@ import PackageDescription
 let package = Package(
     name: "MarsRover",
     products: [
-        .library(name: "MarsRover", targets: ["MarsRover"]),
+        .library(
+            name: "MarsRover",
+            targets: ["MarsRover"]
+        ),
     ],
     targets: [
-        .target(name: "MarsRover", dependencies: [], path: "Sources/MarsRover"),
-        .testTarget(name: "MarsRoverTests", dependencies: ["MarsRover"], path: "Tests/MarsRoverTests")
+        .target(
+            name: "MarsRover",
+            dependencies: [],
+            path: "Sources/MarsRover"
+        ),
+        .testTarget(
+            name: "MarsRoverTests",
+            dependencies: ["MarsRover"],
+            path: "Tests/MarsRoverTests"
+        ),
     ]
 )
