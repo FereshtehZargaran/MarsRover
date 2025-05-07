@@ -31,10 +31,6 @@ class Rover {
         }
     }
 
-    func g(_ z: Character) {
-        go(String(z))
-    }
-
     func pos() -> String {
         return "\(rs.xx) \(rs.yy) \(rs.dd)"
     }
