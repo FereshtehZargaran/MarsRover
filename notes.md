@@ -9,12 +9,17 @@
     - [x] Replace magic strings ("L", "R", "M", "N", "E", "S", "W") with enums `Instruction` and `Direction`.
     - [x] Make RoverState properties private to enforce encapsulation.
       **Use Mikado method**
-            - [x] Change init()- init Rover state.
+            - [x] Change `init(_:)`- init Rover state.
             
 ### Pomodoro 2: 
     - [x] Make RoverState properties private to enforce encapsulation.
       **Use Mikado method**            
-        - [x] Change go()- move logic to Rover state.
-        - [x] Change pos()- move logic to Rover state.
+        - [x] Change `go(_:)`- move logic to Rover state.
+        - [x] Change `pos(_:)`- move logic to Rover state.
+        
+### Pomodoro 3: 
+    - [x] Split the `go(_:)` method into smaller, clearer methods
+    - [x] Refactor `init(_:)`
+
     
 
