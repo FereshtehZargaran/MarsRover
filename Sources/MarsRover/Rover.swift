@@ -10,18 +10,23 @@ class RoverState {
     var x: Int = 0
     var y: Int = 0
     var direction: Direction = .north
+
+    init(x: Int, y: Int, direction: Direction) {
+        self.x = x
+        self.y = y
+        self.direction = direction
+    }
 }
 
 class Rover {
-    private var state = RoverState()
+    private var state: RoverState
 
     init(_ input: String = "") {
         let s = input.split(separator: " ")
-        if s.count >= 3 {
-            state.x = Int(s[0]) ?? 0
-            state.y = Int(s[1]) ?? 0
-            state.direction = Direction(rawValue: String(s[2])) ?? .north
-        }
+        let x = Int(s[0]) ?? 0
+        let y = Int(s[1]) ?? 0
+        let d = Direction(rawValue: String(s[2])) ?? .north
+        self.state = RoverState(x: x, y: y, direction: d)
     }
 
     func go(_ commands: String) {
