@@ -1,11 +1,15 @@
 enum Instruction: Character {
-    case left  = "L", right = "R", move  = "M"
+    case left = "L", right = "R", move = "M"
+}
+
+enum Direction: String {
+    case north = "N", east = "E", south = "S", west = "W"
 }
 
 class RoverState {
     var x: Int = 0
     var y: Int = 0
-    var direction: Character = "N"
+    var direction: Direction = .north
 }
 
 class Rover {
@@ -16,7 +20,7 @@ class Rover {
         if s.count >= 3 {
             state.x = Int(s[0]) ?? 0
             state.y = Int(s[1]) ?? 0
-            state.direction = s[2].first ?? "N"
+            state.direction = Direction(rawValue: String(s[2])) ?? .north
         }
     }
 
@@ -27,33 +31,30 @@ class Rover {
             switch instruction {
             case .left:
                 switch state.direction {
-                case "E": state.direction = "N"
-                case "N": state.direction = "W"
-                case "W": state.direction = "S"
-                case "S": state.direction = "E"
-                default: break
+                case .east: state.direction = .north
+                case .north: state.direction = .west
+                case .west: state.direction = .south
+                case .south: state.direction = .east
                 }
             case .right:
                 switch state.direction {
-                case "E": state.direction = "S"
-                case "S": state.direction = "W"
-                case "W": state.direction = "N"
-                case "N": state.direction = "E"
-                default: break
+                case .east: state.direction = .south
+                case .south: state.direction = .west
+                case .west: state.direction = .north
+                case .north: state.direction = .east
                 }
             case .move:
                 switch state.direction {
-                case "E": state.x += 1
-                case "S": state.y -= 1
-                case "W": state.x -= 1
-                case "N": state.y += 1
-                default: break
+                case .east: state.x += 1
+                case .south: state.y -= 1
+                case .west: state.x -= 1
+                case .north: state.y += 1
                 }
             }
         }
     }
 
     func pos() -> String {
-        return "\(state.x) \(state.y) \(state.direction)"
+        return "\(state.x) \(state.y) \(state.direction.rawValue)"
     }
 }
