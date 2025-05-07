@@ -20,11 +20,29 @@ class Rover {
         for c in commands {
             switch c {
             case "L":
-                switch state.direction { case "E": state.direction = "N" case "N": state.direction = "W" case "W": state.direction = "S" case "S": state.direction = "E" default: break }
+                switch state.direction {
+                case "E": state.direction = "N"
+                case "N": state.direction = "W"
+                case "W": state.direction = "S"
+                case "S": state.direction = "E"
+                default: break
+                }
             case "R":
-                switch state.direction { case "E": state.direction = "S" case "S": state.direction = "W" case "W": state.direction = "N" case "N": state.direction = "E" default: break }
+                switch state.direction {
+                case "E": state.direction = "S"
+                case "S": state.direction = "W"
+                case "W": state.direction = "N"
+                case "N": state.direction = "E"
+                default: break
+                }
             case "M":
-                switch state.direction { case "E": state.x += 1 case "S": state.y -= 1 case "W": state.x -= 1 case "N": state.y += 1 default: break }
+                switch state.direction {
+                case "E": state.x += 1
+                case "S": state.y -= 1
+                case "W": state.x -= 1
+                case "N": state.y += 1
+                default: break
+                }
             default:
                 break
             }
