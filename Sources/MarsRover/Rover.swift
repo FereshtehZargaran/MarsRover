@@ -7,8 +7,8 @@ class RoverState {
 class Rover {
     private var state = RoverState()
 
-    init(_ p: String = "") {
-        let s = p.split(separator: " ")
+    init(_ input: String = "") {
+        let s = input.split(separator: " ")
         if s.count >= 3 {
             state.x = Int(s[0]) ?? 0
             state.y = Int(s[1]) ?? 0
@@ -16,8 +16,8 @@ class Rover {
         }
     }
 
-    func go(_ cms: String) {
-        for c in cms {
+    func go(_ commands: String) {
+        for c in commands {
             switch c {
             case "L":
                 switch state.direction { case "E": state.direction = "N" case "N": state.direction = "W" case "W": state.direction = "S" case "S": state.direction = "E" default: break }
