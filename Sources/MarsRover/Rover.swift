@@ -5,14 +5,14 @@ class RoverState {
 }
 
 class Rover {
-    private var rs = RoverState()
+    private var state = RoverState()
 
     init(_ p: String = "") {
         let s = p.split(separator: " ")
         if s.count >= 3 {
-            rs.x = Int(s[0]) ?? 0
-            rs.y = Int(s[1]) ?? 0
-            rs.direction = s[2].first ?? "N"
+            state.x = Int(s[0]) ?? 0
+            state.y = Int(s[1]) ?? 0
+            state.direction = s[2].first ?? "N"
         }
     }
 
@@ -20,11 +20,11 @@ class Rover {
         for c in cms {
             switch c {
             case "L":
-                switch rs.direction { case "E": rs.direction = "N" case "N": rs.direction = "W" case "W": rs.direction = "S" case "S": rs.direction = "E" default: break }
+                switch state.direction { case "E": state.direction = "N" case "N": state.direction = "W" case "W": state.direction = "S" case "S": state.direction = "E" default: break }
             case "R":
-                switch rs.direction { case "E": rs.direction = "S" case "S": rs.direction = "W" case "W": rs.direction = "N" case "N": rs.direction = "E" default: break }
+                switch state.direction { case "E": state.direction = "S" case "S": state.direction = "W" case "W": state.direction = "N" case "N": state.direction = "E" default: break }
             case "M":
-                switch rs.direction { case "E": rs.x += 1 case "S": rs.y -= 1 case "W": rs.x -= 1 case "N": rs.y += 1 default: break }
+                switch state.direction { case "E": state.x += 1 case "S": state.y -= 1 case "W": state.x -= 1 case "N": state.y += 1 default: break }
             default:
                 break
             }
@@ -32,6 +32,6 @@ class Rover {
     }
 
     func pos() -> String {
-        return "\(rs.x) \(rs.y) \(rs.direction)"
+        return "\(state.x) \(state.y) \(state.direction)"
     }
 }
