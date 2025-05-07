@@ -26,6 +26,7 @@
         - [x] Move `moveForward()` from RoverState to Position.
         - [x] RoverState -> `formatted()`
         - [x] Rover -> `init(_:)`
+    - [x] Move logic to direction.
      
 
     

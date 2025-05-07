@@ -4,6 +4,24 @@ enum Instruction: Character {
 
 enum Direction: String {
     case north = "N", east = "E", south = "S", west = "W"
+
+    func left() -> Direction {
+        switch self {
+        case .north: return .west
+        case .west: return .south
+        case .south: return .east
+        case .east: return .north
+        }
+    }
+
+    func right() -> Direction {
+        switch self {
+        case .north: return .east
+        case .east: return .south
+        case .south: return .west
+        case .west: return .north
+        }
+    }
 }
 
 struct Position {
@@ -18,10 +36,9 @@ struct Position {
         case .north: y += 1
         }
     }
-
 }
 
-class RoverState {
+final class RoverState {
     private var position: Position
     private var direction: Direction
 
@@ -31,21 +48,11 @@ class RoverState {
     }
 
     func rotateLeft() {
-        switch direction {
-        case .east: direction = .north
-        case .north: direction = .west
-        case .west: direction = .south
-        case .south: direction = .east
-        }
+        direction = direction.left()
     }
 
     func rotateRight() {
-        switch direction {
-        case .east: direction = .south
-        case .south: direction = .west
-        case .west: direction = .north
-        case .north: direction = .east
-        }
+        direction = direction.right()
     }
 
     func moveForward() {
@@ -57,11 +64,7 @@ class RoverState {
     }
 }
 
-class Rover {
-    private enum RoverError: Error {
-        case invalidInput
-    }
-
+final class Rover {
     private var state: RoverState
 
     init(_ input: String) {
