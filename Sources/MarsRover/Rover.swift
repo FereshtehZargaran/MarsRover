@@ -7,9 +7,9 @@ enum Direction: String {
 }
 
 class RoverState {
-    var x: Int = 0
-    var y: Int = 0
-    var direction: Direction = .north
+    private var x: Int
+    private var y: Int
+    private var direction: Direction
 
     init(x: Int, y: Int, direction: Direction) {
         self.x = x
