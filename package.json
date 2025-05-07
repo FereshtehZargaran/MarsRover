@@ -1,0 +1,24 @@
+{
+  "name": "marsrover",
+  "version": "1.0.0",
+  "description": "This is the Swift implementation of the Mars Rover kata using Swift Package Manager and XCTest framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FereshtehZargaran/MarsRover.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FereshtehZargaran/MarsRover/issues"
+  },
+  "homepage": "https://github.com/FereshtehZargaran/MarsRover#readme",
+  "devDependencies": {
+    "husky": "^8.0.0"
+  }
+}

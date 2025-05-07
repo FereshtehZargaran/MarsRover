@@ -25,15 +25,15 @@ enum Direction: String {
 }
 
 struct Position {
-    var x: Int
-    var y: Int
+    var coordinateX: Int
+    var coordinateY: Int
 
     mutating func move(in direction: Direction) {
         switch direction {
-        case .east: x += 1
-        case .south: y -= 1
-        case .west: x -= 1
-        case .north: y += 1
+        case .east: coordinateX += 1
+        case .south: coordinateY -= 1
+        case .west: coordinateX -= 1
+        case .north: coordinateY += 1
         }
     }
 }
@@ -60,7 +60,7 @@ final class RoverState {
     }
 
     func formatted() -> String {
-        return "\(position.x) \(position.y) \(direction.rawValue)"
+        return "\(position.coordinateX) \(position.coordinateY) \(direction.rawValue)"
     }
 }
 
@@ -71,16 +71,16 @@ final class Rover {
         let splicedState = input.split(separator: " ")
 
         guard splicedState.count >= 3,
-              let x = Int(splicedState[0]),
-              let y = Int(splicedState[1]),
+              let posX = Int(splicedState[0]),
+              let posY = Int(splicedState[1]),
               let direction = Direction(rawValue: String(splicedState[2]))
         else {
             // default state
-            state = RoverState(position: Position(x: 0, y: 0), direction: .north)
+            state = RoverState(position: Position(coordinateX: 0, coordinateY: 0), direction: .north)
             return
         }
 
-        let position = Position(x: x, y: y)
+        let position = Position(coordinateX: posX, coordinateY: posY)
         state = RoverState(position: position, direction: direction)
     }
 
