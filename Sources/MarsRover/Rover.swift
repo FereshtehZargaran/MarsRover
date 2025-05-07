@@ -1,3 +1,7 @@
+enum Instruction: Character {
+    case left  = "L", right = "R", move  = "M"
+}
+
 class RoverState {
     var x: Int = 0
     var y: Int = 0
@@ -17,9 +21,11 @@ class Rover {
     }
 
     func go(_ commands: String) {
-        for c in commands {
-            switch c {
-            case "L":
+        let instructions = commands.compactMap { Instruction(rawValue: $0) }
+
+        for instruction in instructions {
+            switch instruction {
+            case .left:
                 switch state.direction {
                 case "E": state.direction = "N"
                 case "N": state.direction = "W"
@@ -27,7 +33,7 @@ class Rover {
                 case "S": state.direction = "E"
                 default: break
                 }
-            case "R":
+            case .right:
                 switch state.direction {
                 case "E": state.direction = "S"
                 case "S": state.direction = "W"
@@ -35,7 +41,7 @@ class Rover {
                 case "N": state.direction = "E"
                 default: break
                 }
-            case "M":
+            case .move:
                 switch state.direction {
                 case "E": state.x += 1
                 case "S": state.y -= 1
@@ -43,8 +49,6 @@ class Rover {
                 case "N": state.y += 1
                 default: break
                 }
-            default:
-                break
             }
         }
     }
