@@ -16,6 +16,37 @@ class RoverState {
         self.y = y
         self.direction = direction
     }
+
+    func rotateLeft() {
+        switch direction {
+        case .east: direction = .north
+        case .north: direction = .west
+        case .west: direction = .south
+        case .south: direction = .east
+        }
+    }
+
+    func rotateRight() {
+        switch direction {
+        case .east: direction = .south
+        case .south: direction = .west
+        case .west: direction = .north
+        case .north: direction = .east
+        }
+    }
+
+    func moveForward() {
+        switch direction {
+        case .east: x += 1
+        case .south: y -= 1
+        case .west: x -= 1
+        case .north: y += 1
+        }
+    }
+
+    func formatted() -> String {
+        return "\(x) \(y) \(direction.rawValue)"
+    }
 }
 
 class Rover {
@@ -26,7 +57,7 @@ class Rover {
         let x = Int(s[0]) ?? 0
         let y = Int(s[1]) ?? 0
         let d = Direction(rawValue: String(s[2])) ?? .north
-        self.state = RoverState(x: x, y: y, direction: d)
+        state = RoverState(x: x, y: y, direction: d)
     }
 
     func go(_ commands: String) {
@@ -35,31 +66,16 @@ class Rover {
         for instruction in instructions {
             switch instruction {
             case .left:
-                switch state.direction {
-                case .east: state.direction = .north
-                case .north: state.direction = .west
-                case .west: state.direction = .south
-                case .south: state.direction = .east
-                }
+                state.rotateLeft()
             case .right:
-                switch state.direction {
-                case .east: state.direction = .south
-                case .south: state.direction = .west
-                case .west: state.direction = .north
-                case .north: state.direction = .east
-                }
+                state.rotateRight()
             case .move:
-                switch state.direction {
-                case .east: state.x += 1
-                case .south: state.y -= 1
-                case .west: state.x -= 1
-                case .north: state.y += 1
-                }
+                state.moveForward()
             }
         }
     }
 
     func pos() -> String {
-        return "\(state.x) \(state.y) \(state.direction.rawValue)"
+        return state.formatted()
     }
 }

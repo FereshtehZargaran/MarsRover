@@ -10,7 +10,11 @@
     - [x] Make RoverState properties private to enforce encapsulation.
       **Use Mikado method**
             - [x] Change init()- init Rover state.
-            - [x] Change go()- move logic to Rover state.
-            - [x] Change pos()- move logic to Rover state.
+            
+### Pomodoro 2: 
+    - [x] Make RoverState properties private to enforce encapsulation.
+      **Use Mikado method**            
+        - [x] Change go()- move logic to Rover state.
+        - [x] Change pos()- move logic to Rover state.
     
 
