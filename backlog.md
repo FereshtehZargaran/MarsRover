@@ -33,7 +33,7 @@
 
 ### Step 4: Refine Abstractions
 1. **Encapsulate Primitive Data**
-   - Replace `Int xx`, `Int yy`, and `Character dd`.
+   - Replace `Int x`, `Int y` with with coordinate --> clear responsibilty.
 2. **Replace Long Parameter List in init(_:)**
    - Refactor into a `Position` and `Direction` parameter instead of parsing a string.
 3. **Remove Middle Man**

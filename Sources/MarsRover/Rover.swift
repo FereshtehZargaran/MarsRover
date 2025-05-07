@@ -6,14 +6,27 @@ enum Direction: String {
     case north = "N", east = "E", south = "S", west = "W"
 }
 
+struct Position {
+    var x: Int
+    var y: Int
+
+    mutating func move(in direction: Direction) {
+        switch direction {
+        case .east: x += 1
+        case .south: y -= 1
+        case .west: x -= 1
+        case .north: y += 1
+        }
+    }
+
+}
+
 class RoverState {
-    private var x: Int
-    private var y: Int
+    private var position: Position
     private var direction: Direction
 
-    init(x: Int, y: Int, direction: Direction) {
-        self.x = x
-        self.y = y
+    init(position: Position, direction: Direction) {
+        self.position = position
         self.direction = direction
     }
 
@@ -36,16 +49,11 @@ class RoverState {
     }
 
     func moveForward() {
-        switch direction {
-        case .east: x += 1
-        case .south: y -= 1
-        case .west: x -= 1
-        case .north: y += 1
-        }
+        position.move(in: direction)
     }
 
     func formatted() -> String {
-        return "\(x) \(y) \(direction.rawValue)"
+        return "\(position.x) \(position.y) \(direction.rawValue)"
     }
 }
 
@@ -64,11 +72,13 @@ class Rover {
               let y = Int(splicedState[1]),
               let direction = Direction(rawValue: String(splicedState[2]))
         else {
-            state = RoverState(x: 0, y: 0, direction: .north)
+            // default state
+            state = RoverState(position: Position(x: 0, y: 0), direction: .north)
             return
         }
 
-        state = RoverState(x: x, y: y, direction: direction)
+        let position = Position(x: x, y: y)
+        state = RoverState(position: position, direction: direction)
     }
 
     func go(_ commands: String) {

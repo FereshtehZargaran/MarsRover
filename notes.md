@@ -20,6 +20,13 @@
 ### Pomodoro 3: 
     - [x] Split the `go(_:)` method into smaller, clearer methods
     - [x] Refactor `init(_:)`
+    
+### Pomodoro 4: 
+    - [x] Move x and y to a separate object.
+        - [x] Move `moveForward()` from RoverState to Position.
+        - [x] RoverState -> `formatted()`
+        - [x] Rover -> `init(_:)`
+     
 
     
 
